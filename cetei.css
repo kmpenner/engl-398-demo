@@ -1,0 +1,82 @@
+/* CETEIcean and Reading Stylesheet for Maud Lewis Letter */
+
+tei-tei {
+  display: block;
+  font-family: "Georgia", "Cambria", serif;
+  line-height: 1.6;
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+  color: #222;
+}
+
+tei-teiheader {
+  display: block;
+  background-color: #f8f9fa;
+  border-left: 4px solid #002147;
+  padding: 1rem;
+  margin-bottom: 2rem;
+  font-size: 0.9rem;
+}
+
+tei-title {
+  display: block;
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+tei-facsimile, tei-surface, tei-graphic {
+  display: none;
+}
+
+tei-p {
+  display: block;
+  margin-bottom: 1rem;
+}
+
+tei-date {
+  font-weight: 600;
+  color: #0d3b66;
+}
+
+tei-persname {
+  color: #8b0000;
+  border-bottom: 1px dotted #8b0000;
+}
+
+tei-placename {
+  color: #006400;
+  border-bottom: 1px dotted #006400;
+}
+
+tei-choice {
+  background-color: rgba(255, 230, 150, 0.3);
+  padding: 0 2px;
+  border-radius: 2px;
+}
+
+tei-orig, tei-abbr, tei-sic {
+  display: inline;
+}
+
+tei-reg, tei-expan, tei-corr {
+  display: none;
+}
+
+/* Reading view toggling: show regularized text, hide original */
+.reading-view tei-orig,
+.reading-view tei-abbr,
+.reading-view tei-sic {
+  display: none;
+}
+
+.reading-view tei-reg,
+.reading-view tei-expan,
+.reading-view tei-corr {
+  display: inline;
+}
+
+tei-lb {
+  display: block;
+}

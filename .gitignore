@@ -1,0 +1,14 @@
+# OS and IDE Metadata
+.DS_Store
+Thumbs.db
+*~
+*.swp
+.vscode/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Temporary merge conflict artifacts
+*.orig
+*.rej

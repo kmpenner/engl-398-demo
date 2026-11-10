@@ -1,0 +1,59 @@
+name: TEI XML Validation Gate
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  validate-tei:
+    name: Syntax & Schema Validation
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Install XML validation tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libxml2-utils python3-lxml
+
+      - name: Verify XML Well-Formedness (xmllint)
+        run: |
+          echo "Running xmllint --noout on witness.xml..."
+          xmllint --noout witness.xml
+          echo "Well-formedness check passed: 0 syntax errors."
+
+      - name: Verify Conflict Markers Absence
+        run: |
+          echo "Checking for unresolved Git conflict markers..."
+          if grep -nE '^(<{7}|={7}|>{7})' witness.xml; then
+            echo "::error file=witness.xml::Unresolved git conflict markers found in witness.xml!"
+            exit 1
+          fi
+          echo "No conflict markers detected."
+
+      - name: Verify Relax NG Schema Compliance (msdesc.rng)
+        run: |
+          python3 - << 'EOF'
+          import sys
+          from lxml import etree
+
+          try:
+            schema_doc = etree.parse("msdesc.rng")
+            schema = etree.RelaxNG(schema_doc)
+            xml_doc = etree.parse("witness.xml")
+            if schema.validate(xml_doc):
+              print("Schema validation successful: witness.xml is fully valid against msdesc.rng.")
+              sys.exit(0)
+            else:
+              print("Schema validation failed:")
+              for error in schema.error_log:
+                print(f"  Line {error.line}: {error.message}")
+              sys.exit(1)
+          except Exception as e:
+            print(f"Validation execution error: {e}")
+            sys.exit(1)
+          EOF

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="msdesc.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+  <teiHeader>
+    <fileDesc>
+      <titleStmt>
+        <title>Electronic Edition of Maud Lewis Letter to Mr. Kinnear (February 13, 1967)</title>
+        <author>Lewis, Maud, 1903-1970</author>
+        <editor xml:id="editor">Ken Penner</editor>
+        <respStmt>
+          <resp>Diplomatic transcription, manual normalization, and editorial collation</resp>
+          <name ref="#editor">Ken Penner</name>
+        </respStmt>
+      </titleStmt>
+      <publicationStmt>
+        <publisher>St. Francis Xavier University</publisher>
+        <pubPlace>Antigonish, Nova Scotia</pubPlace>
+        <date when="2026">2026</date>
+        <availability status="free">
+          <p>Open Access digital scholarly edition.</p>
+          <licence target="https://creativecommons.org/licenses/by-sa/4.0/">Distributed under CC BY-SA 4.0 International.</licence>
+        </availability>
+      </publicationStmt>
+      <sourceDesc>
+        <msDesc>
+          <msIdentifier>
+            <settlement>Antigonish</settlement>
+            <repository>St. Francis Xavier University Special Collections</repository>
+            <idno>MS-ML-1967-02-13</idno>
+          </msIdentifier>
+          <physDesc>
+            <objectDesc form="sheet">
+              <supportDesc material="paper">
+                <support>
+                  <p>Commercial lined stationery, single octavo leaf written in blue ballpoint ink.</p>
+                </support>
+                <extent>1 leaf (1 page text).</extent>
+              </supportDesc>
+            </objectDesc>
+            <handDesc>
+              <handNote xml:id="h1" scope="major">Autograph cursive script of folk artist Maud Lewis.</handNote>
+            </handDesc>
+          </physDesc>
+          <history>
+            <origin>
+              <origDate when="1967-02-13">February 13, 1967</origDate>
+              <origPlace ref="https://www.geonames.org/6065545">Marshalltown, Digby County, Nova Scotia</origPlace>
+            </origin>
+            <provenance>Addressed to John Kinnear; acquired via private collection.</provenance>
+          </history>
+        </msDesc>
+      </sourceDesc>
+    </fileDesc>
+    <encodingDesc>
+      <projectDesc>
+        <p>RELS 398 / ENGL 398 collaborative digital scholarly edition demonstration. Encoded according to TEI P5 Guidelines using the msdesc.rng schema. Modules 1 through 9 encoding layers (metadata, facsimile, diplomatic transcription, orthographic regularization, linguistic markup, and named entities) are consolidated.</p>
+      </projectDesc>
+    </encodingDesc>
+    <revisionDesc>
+      <change when="2026-11-10" who="#editor" status="consolidated">
+        Consolidated Modules 1 through 9 layers for collaborative Git workflow demonstration.
+      </change>
+    </revisionDesc>
+  </teiHeader>
+  <facsimile>
+    <surface xml:id="page1" ulx="0" uly="0" lrx="2000" lry="1331">
+      <graphic url="letter.jpg"/>
+    </surface>
+  </facsimile>
+  <text>
+    <body>
+      <div type="letter">
+        <pb facs="#page1"/>
+        <p>
+          <date when="1967-02-13">Feb 13</date><lb/>
+        </p>
+        <p>
+          Dear <persName>Mr. Kinnear</persName>:<lb/>
+        </p>
+        <p>
+          Thanks for the pictures they look good, do you know I won't <choice><orig>beable</orig><reg resp="#editor">be able</reg></choice> to do 20 more for you, as I have orders I haven't done yet and they are waiting for them. I might <choice><orig>beable</orig><reg resp="#editor">be able</reg></choice> to do 15. <gap reason="illegible" unit="chars" extent="5"/> more for you. <choice><orig>and</orig><reg resp="#editor">And</reg></choice> I don't know when I can do them for you. <choice><orig>the</orig><reg resp="#editor">The</reg></choice> cars are starting to come now. I can only paint 1 <choice><orig>pinture</orig><reg resp="#editor">picture</reg></choice> <choice><orig>A</orig><reg resp="#editor">a</reg></choice> day. I had <choice><orig>A</orig><reg resp="#editor">a</reg></choice> car from <placeName ref="https://www.geonames.org/6255148">England</placeName> last week they <choice><orig>wan't</orig><reg resp="#editor">want</reg></choice> 6. <choice><orig>so</orig><reg resp="#editor">So</reg></choice> it keeps me pretty busy. <choice><orig>we</orig><reg resp="#editor">We</reg></choice> are getting lots of snow will be glad when old winter is over with, the snow is deep down here. <choice><orig>can't</orig><reg resp="#editor">Can't</reg></choice> get out to the <choice><orig>Trailor</orig><reg resp="#editor">trailer</reg></choice> will have to wait to Spring to do painting <choice><sic>gt</sic><corr resp="#editor">get</corr></choice> in it now. I can only do 5 more pictures for you. <choice><orig>did</orig><reg resp="#editor">Did</reg></choice> you get the dustpans? <choice><orig>hope</orig><reg resp="#editor">Hope</reg></choice> you like them.<lb/>
+        </p>
+        <p>
+          Sincerely,<lb/>
+          <persName ref="https://viaf.org/en/viaf/55743452">Maud Lewis</persName><lb/>
+        </p>
+      </div>
+    </body>
+  </text>
+</TEI>
