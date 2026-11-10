@@ -1,13 +1,13 @@
 ## Summary of Changes
 <!-- Concise imperative summary of what document, layer, or element this PR modifies -->
-- **Document / Witness:** Maud Lewis Letter to Mr. Kinnear (February 13, 1967)
+- **Document / Witness:** Louis XVI Address to the Assemblée Nationale (31 December 1791, BL Zweig MS 169)
 - **Scope of Modification:** 
 
 ## Codicological and Paleographical Evidence
 <!-- Verify primary witness facsimile coordinates, readings, or authority records -->
-- [ ] Primary witness facsimile verified against high-resolution manuscript scan (`letter.jpg`)
-- [ ] Authority records verified against VIAF, GeoNames, or Wikidata (if modifying named entities or places)
-- [ ] Orthographic regularization supported by external dictionary authority (if modifying `<choice>`)
+- [ ] Primary witness facsimile verified against British Library manuscript scan (`decree.jpg`)
+- [ ] Authority records verified against Wikidata or GeoNames (e.g., `wikidata:Q780457`, `geonames:2761369`)
+- [ ] Orthographic regularization verified (18th-c. `-ois`/`-oit` and diplomatic abbreviations like `xbre` = décembre)
 
 ## Schema and Validation Checklist
 <!-- Mandatory quality gates before merge -->

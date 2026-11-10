@@ -2,6 +2,7 @@
 ## RELS 398.10 / ENGL 398.10 · Lesson 10.1 (Tuesday, November 10, 2026)
 **Location:** Mulroney Hall 3032 &middot; **Time:** 8:30 – 9:20 AM (50 minutes)  
 **Music:** The Band, "The Weight" (1968) playing before minute 0  
+**Witness:** Ace Long's Edition — Louis XVI Address to the Assemblée Nationale (31 December 1791, BL Zweig MS 169)  
 
 ---
 
@@ -9,89 +10,90 @@
 
 ### 08:30 – 08:36 (6 mins) · Framing: From Solitary Editor to Community
 - **Pedagogical Springboard:** *"For nine weeks, you carried your primary witness entirely alone on your laptop. Today, we put your work onto GitHub and learn to share the editorial weight as a community."*
-- **Milestone Overview:** Slide 3. Nine accumulated layers (teiHeader, facsimiles, diplomatic text, AI reconciliation, regularization, stylesheets, lemmatization, named entities).
+- **Milestone Overview:** Slide 3. Nine accumulated layers (`teiHeader`, BL IIIF facsimile, diplomatic transcription, AI reconciliation, regularization, stylesheets, lemmatization, and named entities).
 - **Remembrance Day Notice:** University closed Wednesday, Nov 11. Week 10 is a two-meeting consolidation milestone.
 
 ---
 
 ### 08:36 – 08:46 (10 mins) · Phase 2: Live Demo — Remotes, Branches, and PR Apparatus
 
-1. **Verify Remote Configuration on Projector:**
-   Open terminal in VS Code:
+1. **Fork & Verify Remote Configuration (Projector):**
+   - Have Ace fork `https://github.com/kmpenner/rels-398-demo` on GitHub and clone his fork, OR run in your demo terminal:
    ```bash
    git status
    git remote -v
    ```
-   *Explain that `origin` points to your personal repository anchor on GitHub.*
+   *(On Ace's clone: `git remote add upstream https://github.com/kmpenner/rels-398-demo.git`)*
 
 2. **Create a Feature Branch:**
    ```bash
-   git checkout -b feature/date-audit
+   git checkout -b feature/french-entities
    ```
    *Emphasize Slide 9: Never commit experimental draft markup directly to `main`. Isolating work on temporary feature branches keeps production clean.*
 
-3. **Make an Evidentiary Editorial Edit:**
-   Open `witness.xml` to line 65 (the letter date). Explain that an editor examines the postmark and heading, questioning whether the numeral is 13 or 15:
-   Change line 65 from:
+3. **Make a Draft Editorial Edit on Line 113 (`<orgName>`):**
+   Open `witness.xml` to line 113 (`Assemblee Nationale`). Simulate an early collaborator drafting entity markup by adding `type="legislature"` while mistakenly linking to the older Constituent Assembly (`wikidata:Q876424`):
+   Change line 113 from:
    ```xml
-   <date when="1967-02-13">Feb 13</date><lb/>
+            l'<orgName ref="wikidata:Q780457"><choice><orig>Assemblee</orig><reg resp="#editor">Assemblée</reg></choice> Nationale</orgName>
    ```
    to:
    ```xml
-   <date when="1967-02-15" cert="medium">Feb 15?</date><lb/>
+            l'<orgName ref="wikidata:Q876424" type="legislature"><choice><orig>Assemblee</orig><reg resp="#editor">Assemblée</reg></choice> Nationale</orgName>
    ```
 
 4. **Verify Syntax and Commit:**
    ```bash
    xmllint --noout witness.xml
    git add witness.xml
-   git commit -m "Propose date audit: February 15 with medium certainty based on postmark"
+   git commit -m "Propose National Assembly type classification and Wikidata reference"
    ```
 
 5. **Push Feature Branch to GitHub:**
    ```bash
-   git push -u origin feature/date-audit
+   git push -u origin feature/french-entities
    ```
 
 6. **Open Pull Request on GitHub (Projector):**
-   - Switch to browser (`https://github.com/kmpenner/rels-398-demo`).
+   - Switch to browser (`https://github.com/kmpenner/rels-398-demo` or Ace's fork -> PR to upstream).
    - Click **Compare & pull request**.
    - Show how `.github/PULL_REQUEST_TEMPLATE.md` automatically populates the description.
-   - Show the **Split Diff View** (Slide 12).
-   - Show how to add an **Inline Comment** (Slide 13) questioning the reading.
+   - Show **Split Diff View** (Slide 12).
+   - Add an **Inline Review Comment** on line 113 (Slide 13):
+     *"Look at line 115: `31 xbre 1791` means 31 December 1791 (not October!). By Dec 31, the Constituent Assembly (`Q876424`) had dissolved; this should point to Legislative Assembly (`Q780457`)."*
 
 ---
 
-### 08:46 – 08:56 (10 mins) · Phase 3: Lab A — Student Remote Setup & PR
-- Students configure their remotes and create their feature branch (`feature/french-entities`, `feature/maud-lewis-dates`, `feature/treaty-places`).
-- Circulate in MULH 3032 to assist Ace, Olyvia, and Andromeda.
+### 08:46 – 08:56 (10 mins) · Phase 3: Lab A — Remote Setup & PR
+- Verify Ace's fork (`origin`) and `upstream` connection in VS Code terminal (`git remote -v`).
+- Confirm Ace has created `feature/french-entities` and opened a Pull Request on GitHub.
 
 ---
 
 ### 08:56 – 09:12 (16 mins) · Phase 4: Lab B — Controlled Conflict Simulation
 
-1. **Simulate a Concurrent Editorial Edit on `main`:**
+1. **Simulate a Concurrent Editorial Confirmation on `main`:**
    In terminal:
    ```bash
    git checkout main
    ```
-   Explain: *"While our pull request was under review, another scholar verified the Kinnear archival catalog and committed a confirmation on `main`."*
+   Explain: *"Meanwhile on `main`, an archival verifier checked `decree.jpg`, confirmed the `xbre` = December date, and added certainty metadata to the Legislative Assembly (`Q780457`)."*
    
-   Edit line 65 on `main` to add calendar and respondent metadata:
+   Edit line 113 on `main` to add `@cert` and `@resp`:
    ```xml
-   <date when="1967-02-13" resp="#editor">Feb 13</date><lb/>
+            l'<orgName ref="wikidata:Q780457" cert="high" resp="#editor"><choice><orig>Assemblee</orig><reg resp="#editor">Assemblée</reg></choice> Nationale</orgName>
    ```
    Commit on `main`:
    ```bash
    xmllint --noout witness.xml
    git add witness.xml
-   git commit -m "Confirm letter date as 1967-02-13 per Kinnear catalog records"
+   git commit -m "Confirm Legislative Assembly (Q780457) for 31 December 1791 decree"
    ```
 
 2. **Trigger the Merge Conflict:**
    Attempt to merge the feature branch into `main`:
    ```bash
-   git merge feature/date-audit
+   git merge feature/french-entities
    ```
    **Expected Terminal Output:**
    ```text
@@ -101,21 +103,21 @@
    ```
 
 3. **Inspect Conflict in VS Code (Slide 14):**
-   Open `witness.xml`. Show the class the conflict markers:
+   Open `witness.xml`. Show the conflict markers around line 113:
    ```xml
    <<<<<<< HEAD
-             <date when="1967-02-13" resp="#editor">Feb 13</date><lb/>
+            l'<orgName ref="wikidata:Q780457" cert="high" resp="#editor"><choice><orig>Assemblee</orig><reg resp="#editor">Assemblée</reg></choice> Nationale</orgName>
    =======
-             <date when="1967-02-15" cert="medium">Feb 15?</date><lb/>
-   >>>>>>> feature/date-audit
+            l'<orgName ref="wikidata:Q876424" type="legislature"><choice><orig>Assemblee</orig><reg resp="#editor">Assemblée</reg></choice> Nationale</orgName>
+   >>>>>>> feature/french-entities
    ```
 
 4. **Execute the Editorial Synthesis Move:**
-   Explain: *"Do not blindly click 'Accept Current' or 'Accept Incoming'. Scholarly editing requires synthesizing both contributions."*
+   Explain: *"Do not blindly click 'Accept Current' or 'Accept Incoming'. Keep the verified Legislative Assembly link (`wikidata:Q780457`) and `@cert/@resp` from `HEAD`, AND synthesize the helpful `@type=\"legislature\"` contribution from `feature/french-entities`."*
    
-   Combine both readings into an authoritative consensus:
+   Replace the conflict block with:
    ```xml
-             <date when="1967-02-13" cert="medium" resp="#editor">Feb 13</date><lb/>
+            l'<orgName ref="wikidata:Q780457" type="legislature" cert="high" resp="#editor"><choice><orig>Assemblee</orig><reg resp="#editor">Assemblée</reg></choice> Nationale</orgName>
    ```
    Delete all marker lines (`<<<<<<<`, `=======`, `>>>>>>>`).
 
@@ -133,20 +135,19 @@
 1. **Record the Merge Commit (Slide 15):**
    ```bash
    git add witness.xml
-   git commit -m "Merge branch 'feature/date-audit': synthesize date attributes"
+   git commit -m "Merge branch 'feature/french-entities': synthesize assembly markup"
    git push origin main
    ```
 
 2. **Delete the Feature Branch:**
    ```bash
-   git branch -d feature/date-audit
-   git push origin --delete feature/date-audit
+   git branch -d feature/french-entities
+   git push origin --delete feature/french-entities
    ```
 
-3. **Friday Preview (Meeting #27 · Continuous Integration & Peer Review):**
-   - Preview `.github/workflows/validate.yml`.
-   - Explain how GitHub Actions will automatically run `xmllint` and `msdesc.rng` on every push so no broken XML ever slips into production.
-   - Remind students: Assignment Module 10 is due Friday, Nov 13, at 11:00 PM.
+3. **Workshop 10 Deliverable & Friday Preview (Meeting #27):**
+   - Remind Ace of `CONSOLIDATION.md`: record `git log -1` merge commit hash, paste `xmllint --noout` output, and write a 100–150 word explanation citing `decree.jpg` (`31 xbre 1791`).
+   - Preview `.github/workflows/validate.yml` for Friday's GitHub Actions CI/CD session.
 
 ---
 

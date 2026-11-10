@@ -1,4 +1,4 @@
-/* CETEIcean and Reading Stylesheet for Maud Lewis Letter */
+/* CETEIcean and Reading Stylesheet for Louis XVI Address (BL Zweig MS 169) */
 
 tei-tei {
   display: block;
@@ -26,7 +26,7 @@ tei-title {
   margin-bottom: 0.5rem;
 }
 
-tei-facsimile, tei-surface, tei-graphic {
+tei-facsimile, tei-surface, tei-graphic, tei-zone {
   display: none;
 }
 
@@ -45,9 +45,23 @@ tei-persname {
   border-bottom: 1px dotted #8b0000;
 }
 
+tei-orgname {
+  color: #4b0082;
+  border-bottom: 1px dotted #4b0082;
+}
+
 tei-placename {
   color: #006400;
   border-bottom: 1px dotted #006400;
+}
+
+tei-hi[rend="superscript"] {
+  vertical-align: super;
+  font-size: 0.75em;
+}
+
+tei-gap {
+  color: #666;
 }
 
 tei-choice {

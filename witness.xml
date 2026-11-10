@@ -1,15 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-model href="msdesc.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
-<TEI xmlns="http://www.tei-c.org/ns/1.0">
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xml:id="Ace_LouisXVI_Decree_BL">
   <teiHeader>
     <fileDesc>
       <titleStmt>
-        <title>Electronic Edition of Maud Lewis Letter to Mr. Kinnear (February 13, 1967)</title>
-        <author>Lewis, Maud, 1903-1970</author>
-        <editor xml:id="editor">Ken Penner</editor>
+        <title>Normalized Edition of Louis XVI's Address to the Assemblée Nationale, 31 December 1791</title>
+        <author>
+          <persName ref="https://viaf.org/viaf/7404">Louis XVI, King of France (1754–1793)</persName>
+        </author>
+        <editor>
+          <persName>Ace Long</persName>
+        </editor>
         <respStmt>
-          <resp>Diplomatic transcription, manual normalization, and editorial collation</resp>
-          <name ref="#editor">Ken Penner</name>
+          <resp>Diplomatic transcription, manual normalization, and editorial audit</resp>
+          <name xml:id="editor">Ace Long</name>
+        </respStmt>
+        <respStmt>
+          <resp>AI-assisted normalization and candidate generation</resp>
+          <name xml:id="gemini">Gemini</name>
+        </respStmt>
+        <respStmt>
+          <resp>Collaborative Git workflow review and schema QA</resp>
+          <name xml:id="instructor">Ken Penner</name>
         </respStmt>
       </titleStmt>
       <publicationStmt>
@@ -17,73 +29,325 @@
         <pubPlace>Antigonish, Nova Scotia</pubPlace>
         <date when="2026">2026</date>
         <availability status="free">
-          <p>Open Access digital scholarly edition.</p>
-          <licence target="https://creativecommons.org/licenses/by-sa/4.0/">Distributed under CC BY-SA 4.0 International.</licence>
+          <licence target="https://creativecommons.org/licenses/by/4.0/">
+            Distributed under a Creative Commons Attribution 4.0 International licence.
+          </licence>
         </availability>
       </publicationStmt>
       <sourceDesc>
         <msDesc>
           <msIdentifier>
-            <settlement>Antigonish</settlement>
-            <repository>St. Francis Xavier University Special Collections</repository>
-            <idno>MS-ML-1967-02-13</idno>
+            <country>United Kingdom</country>
+            <settlement>London</settlement>
+            <institution ref="https://viaf.org/viaf/121814978">British Library</institution>
+            <repository>Western Manuscripts</repository>
+            <idno type="shelfmark">Zweig MS 169</idno>
+            <altIdentifier type="IIIF">
+              <idno>https://bl.digirati.io/iiif/ark:/81055/vdc_100139607660.0x000001</idno>
+            </altIdentifier>
           </msIdentifier>
+          <msContents>
+            <summary>
+              Autograph letter / address from Louis XVI to the Assemblée Nationale, dated
+              31 December 1791 (31 xbre 1791), concerning the imperial note delivered to the
+              French Ambassador in Vienna regarding émigré assemblies on the territory of
+              the Elector of Trier and France's demands for their dispersal.
+            </summary>
+            <msItem xml:id="item1">
+              <locus from="f.1r" to="f.1r">f. 1r</locus>
+              <title type="supplied">Address to the Assemblée Nationale on the Imperial Note concerning the Elector of Trier</title>
+              <textLang mainLang="fr">French</textLang>
+            </msItem>
+          </msContents>
           <physDesc>
-            <objectDesc form="sheet">
+            <objectDesc form="leaf">
               <supportDesc material="paper">
-                <support>
-                  <p>Commercial lined stationery, single octavo leaf written in blue ballpoint ink.</p>
-                </support>
-                <extent>1 leaf (1 page text).</extent>
+                <support><p>Paper.</p></support>
+                <extent>1 leaf</extent>
               </supportDesc>
             </objectDesc>
-            <handDesc>
-              <handNote xml:id="h1" scope="major">Autograph cursive script of folk artist Maud Lewis.</handNote>
+            <handDesc hands="1">
+              <handNote xml:id="h1" scribeRef="https://viaf.org/viaf/7404">
+                Hand of Louis XVI; brown iron-gall ink, cursive 18th-century
+                French chancery script.
+              </handNote>
             </handDesc>
           </physDesc>
           <history>
             <origin>
-              <origDate when="1967-02-13">February 13, 1967</origDate>
-              <origPlace ref="https://www.geonames.org/6065545">Marshalltown, Digby County, Nova Scotia</origPlace>
+              <origDate when="1791-12-31">31 December 1791</origDate>
+              <origPlace>Paris, France</origPlace>
             </origin>
-            <provenance>Addressed to John Kinnear; acquired via private collection.</provenance>
+            <provenance>Part of the Stefan Zweig Collection of manuscripts (British Library Zweig MS 169).</provenance>
           </history>
         </msDesc>
       </sourceDesc>
     </fileDesc>
     <encodingDesc>
       <projectDesc>
-        <p>RELS 398 / ENGL 398 collaborative digital scholarly edition demonstration. Encoded according to TEI P5 Guidelines using the msdesc.rng schema. Modules 1 through 9 encoding layers (metadata, facsimile, diplomatic transcription, orthographic regularization, linguistic markup, and named entities) are consolidated.</p>
+        <p>This regularized edition normalizes 18th-century French prerevolutionary orthography and expands abbreviations using parallel TEI choice markup (method="markup"). Historical diplomatic readings are preserved in orig, sic, and abbr, while regularized forms are supplied in reg, corr, and expan with editorial attribution (@resp="#editor" and @resp="#gemini"). Imperfect verb forms ending in -ois and -oit are regularized to -ais and -ait per the 1835 Académie française reform, while invariant nouns ending in -oit (such as droit) are strictly preserved. Missing accents on capitalized words and historical prepositions are restored. Named entities link to authority records via compact @ref CURIEs: wikidata: (https://www.wikidata.org/wiki/) and geonames: (https://www.geonames.org/).</p>
       </projectDesc>
     </encodingDesc>
     <revisionDesc>
       <change when="2026-11-10" who="#editor" status="consolidated">
-        Consolidated Modules 1 through 9 layers for collaborative Git workflow demonstration.
+        Consolidated Modules 1 through 9 layers (teiHeader, BL IIIF facsimile, diplomatic transcription, orthographic regularization, and verified named entities) into collaborative Git workflow baseline.
       </change>
     </revisionDesc>
   </teiHeader>
   <facsimile>
-    <surface xml:id="page1" ulx="0" uly="0" lrx="2000" lry="1331">
-      <graphic url="letter.jpg"/>
+    <surface xml:id="f1r" ulx="0" uly="0" lrx="1590" lry="2000">
+      <graphic url="decree.jpg"/>
+      <zone xml:id="z_salutation" ulx="130" uly="20" lrx="700" lry="70"/>
+      <zone xml:id="z_date" ulx="560" uly="20" lrx="820" lry="70"/>
+      <zone xml:id="z_body_p1" ulx="100" uly="100" lrx="820" lry="380"/>
+      <zone xml:id="z_body_p2" ulx="100" uly="390" lrx="820" lry="680"/>
     </surface>
   </facsimile>
   <text>
     <body>
-      <div type="letter">
-        <pb facs="#page1"/>
-        <p>
-          <date when="1967-02-13">Feb 13</date><lb/>
-        </p>
-        <p>
-          Dear <persName>Mr. Kinnear</persName>:<lb/>
-        </p>
-        <p>
-          Thanks for the pictures they look good, do you know I won't <choice><orig>beable</orig><reg resp="#editor">be able</reg></choice> to do 20 more for you, as I have orders I haven't done yet and they are waiting for them. I might <choice><orig>beable</orig><reg resp="#editor">be able</reg></choice> to do 15. <gap reason="illegible" unit="chars" extent="5"/> more for you. <choice><orig>and</orig><reg resp="#editor">And</reg></choice> I don't know when I can do them for you. <choice><orig>the</orig><reg resp="#editor">The</reg></choice> cars are starting to come now. I can only paint 1 <choice><orig>pinture</orig><reg resp="#editor">picture</reg></choice> <choice><orig>A</orig><reg resp="#editor">a</reg></choice> day. I had <choice><orig>A</orig><reg resp="#editor">a</reg></choice> car from <placeName ref="https://www.geonames.org/6255148">England</placeName> last week they <choice><orig>wan't</orig><reg resp="#editor">want</reg></choice> 6. <choice><orig>so</orig><reg resp="#editor">So</reg></choice> it keeps me pretty busy. <choice><orig>we</orig><reg resp="#editor">We</reg></choice> are getting lots of snow will be glad when old winter is over with, the snow is deep down here. <choice><orig>can't</orig><reg resp="#editor">Can't</reg></choice> get out to the <choice><orig>Trailor</orig><reg resp="#editor">trailer</reg></choice> will have to wait to Spring to do painting <choice><sic>gt</sic><corr resp="#editor">get</corr></choice> in it now. I can only do 5 more pictures for you. <choice><orig>did</orig><reg resp="#editor">Did</reg></choice> you get the dustpans? <choice><orig>hope</orig><reg resp="#editor">Hope</reg></choice> you like them.<lb/>
-        </p>
-        <p>
-          Sincerely,<lb/>
-          <persName ref="https://viaf.org/en/viaf/55743452">Maud Lewis</persName><lb/>
-        </p>
+      <div type="letter" xml:id="div_letter" xml:lang="fr">
+        <pb n="f.1r" facs="#f1r"/>
+        <div>
+          <p>
+            <choice><orig>a</orig><reg resp="#editor">à</reg></choice>
+            l'<orgName ref="wikidata:Q780457"><choice><orig>Assemblee</orig><reg resp="#editor">Assemblée</reg></choice> Nationale</orgName>
+            <gap reason="damage" unit="chars" extent="20"/>
+            <date when="1791-12-31">31 <choice><abbr type="suspension">x<hi rend="superscript">bre</hi></abbr><expan resp="#editor">décembre</expan></choice> 1791</date>.
+            <gap reason="damage" unit="chars" extent="15"/>
+            1
+          </p>
+        </div>
+        <div>
+          <p>
+            J'ai chargé <persName ref="wikidata:Q2976897">le Ministre des affaires <choice><orig>etrangeres</orig><reg resp="#editor">étrangères</reg></choice></persName>,
+            <choice>
+              <abbr type="title">MM.</abbr>
+              <expan resp="#editor">Messieurs</expan>
+            </choice>
+            de vous communiquer<lb/>
+            l'office que <persName ref="wikidata:Q151321">l'Empereur</persName> a fait remettre
+            <choice>
+              <orig>a</orig>
+              <reg resp="#editor">à</reg>
+            </choice>
+            <persName ref="wikidata:Q3052789">l'Ambassadeur de France</persName> <choice><orig>a</orig><reg resp="#editor">à</reg></choice><lb/>
+            <placeName ref="geonames:2761369">Vienne</placeName>.
+            <choice>
+              <orig>cet</orig>
+              <reg resp="#editor">Cet</reg>
+            </choice>
+            office, je dois le dire, m'a causé le plus grand
+            <choice>
+              <orig>etonnement</orig>
+              <reg resp="#editor">étonnement</reg>
+            </choice>.<lb/>
+            <choice>
+              <orig>J'avois</orig>
+              <reg resp="#editor">J'avais</reg>
+            </choice>
+            droit
+            <choice>
+              <orig>a</orig>
+              <reg resp="#editor">à</reg>
+            </choice>
+            compter sur les
+            <choice>
+              <orig>sentimens</orig>
+              <reg resp="#editor">sentiments</reg>
+            </choice>
+            de <persName ref="wikidata:Q151321">l'Empereur</persName> et sur son<lb/>
+            <choice>
+              <orig>desir</orig>
+              <reg resp="#editor">désir</reg>
+            </choice>
+            de conserver avec la <placeName ref="geonames:3017382">France</placeName> la bonne intelligence et tous les<lb/>
+            rapports, qui doivent
+            <choice>
+              <orig>regner</orig>
+              <reg resp="#editor">régner</reg>
+            </choice>
+            entre deux alliés.
+            <choice>
+              <orig>je</orig>
+              <reg resp="#editor">Je</reg>
+            </choice>
+            ne peux pas<lb/>
+            croire encore que ses dispositions soient changées, j'aime
+            <choice>
+              <orig>a</orig>
+              <reg resp="#editor">à</reg>
+            </choice>
+            me<lb/>
+            persuader qu'il a
+            <choice>
+              <orig>eté</orig>
+              <reg resp="#editor">été</reg>
+            </choice>
+            trompé sur la
+            <choice>
+              <orig>verité</orig>
+              <reg resp="#editor">vérité</reg>
+            </choice>
+            des faits, qu'il a<lb/>
+            cru que <persName ref="wikidata:Q565780">l'Electeur de <choice><orig>Treves</orig><reg resp="#editor">Trèves</reg></choice></persName>
+            <choice>
+              <orig>avoit</orig>
+              <reg resp="#editor">avait</reg>
+            </choice>
+            satisfait aux devoirs de la<lb/>
+            justice et du bon voisinage, et que
+            <choice>
+              <orig>neantmoins</orig>
+              <reg resp="#editor">néanmoins</reg>
+            </choice>
+            <choice>
+              <orig>a</orig>
+              <reg resp="#editor">à</reg>
+            </choice>
+            droit
+            <choice>
+              <orig>avoit</orig>
+              <reg resp="#editor">avait</reg>
+            </choice>
+            <choice>
+              <orig>a</orig>
+              <reg resp="#editor">à</reg>
+            </choice><lb/>
+            craindre que ses <placeName ref="wikidata:Q1794352"><choice><orig>etats</orig><reg resp="#editor">états</reg></choice></placeName>
+            ne fussent exposés
+            <choice>
+              <orig>a</orig>
+              <reg resp="#editor">à</reg>
+            </choice>
+            des violences ou
+            <choice>
+              <orig>a</orig>
+              <reg resp="#editor">à</reg>
+            </choice>
+            des<lb/>
+            incursions
+            <choice>
+              <orig>particulieres</orig>
+              <reg resp="#editor">particulières</reg>
+            </choice>.
+          </p>
+          <p>
+            Dans la
+            <choice>
+              <orig>reponse</orig>
+              <reg resp="#editor">réponse</reg>
+            </choice>
+            que je
+            <choice>
+              <sic>faits</sic>
+              <corr resp="#editor">fais</corr>
+            </choice>
+            <choice>
+              <orig>a</orig>
+              <reg resp="#editor">à</reg>
+            </choice>
+            <persName ref="wikidata:Q151321">l'Empereur</persName>, je lui
+            <choice>
+              <orig>repette</orig>
+              <reg resp="#editor">répète</reg>
+            </choice>
+            que je n'ai<lb/>
+            rien demandé que de juste
+            <choice>
+              <orig>a</orig>
+              <reg resp="#editor">à</reg>
+            </choice>
+            <persName ref="wikidata:Q565780">l'Electeur de <choice><orig>Treves</orig><reg resp="#editor">Trèves</reg></choice></persName>,
+            rien dont<lb/>
+            <persName ref="wikidata:Q151321">l'Empereur</persName> n'ait lui
+            <choice>
+              <orig>mesme</orig>
+              <reg resp="#editor">même</reg>
+            </choice>
+            donné l'exemple.
+            <choice>
+              <orig>je</orig>
+              <reg resp="#editor">Je</reg>
+            </choice>
+            lui rappelle le<lb/>
+            soin que la Nation
+            <choice>
+              <orig>Françoise</orig>
+              <reg resp="#editor">Française</reg>
+            </choice>
+            a prise de
+            <choice>
+              <orig>prevenir</orig>
+              <reg resp="#editor">prévenir</reg>
+            </choice>
+            sur le champ<lb/>
+            les
+            <choice>
+              <orig>rassemblemens</orig>
+              <reg resp="#editor">rassemblements</reg>
+            </choice>
+            de Brabançons qui
+            <choice>
+              <orig>paroissent</orig>
+              <reg resp="#editor">paraissent</reg>
+            </choice>
+            vouloir se former<lb/>
+            dans le voisinage des <placeName ref="wikidata:Q700283"><choice><orig>Pays Bas</orig><reg resp="#editor">Pays-Bas</reg></choice> autrichiens</placeName>. Enfin je lui renouvelle<lb/>
+            le
+            <choice>
+              <orig>voeu</orig>
+              <reg resp="#editor">vœu</reg>
+            </choice>
+            de la
+            <choice>
+              <orig>france</orig>
+              <reg resp="#editor">France</reg>
+            </choice>
+            pour la conservation de la paix.
+            <choice>
+              <orig>mais</orig>
+              <reg resp="#editor">Mais</reg>
+            </choice>
+            en<lb/>
+            <choice>
+              <orig>mesme</orig>
+              <reg resp="#editor">même</reg>
+            </choice>
+            temps je lui
+            <choice>
+              <orig>declare</orig>
+              <reg resp="#editor">déclare</reg>
+            </choice>
+            que si
+            <choice>
+              <orig>a</orig>
+              <reg resp="#editor">à</reg>
+            </choice>
+            <choice>
+              <orig>l'epoque</orig>
+              <reg resp="#editor">l'époque</reg>
+            </choice>
+            que j'ai fixée<lb/>
+            <persName ref="wikidata:Q565780">l'Electeur de <choice><orig>Treves</orig><reg resp="#editor">Trèves</reg></choice></persName>
+            n'a pas effectivement et
+            <choice>
+              <orig>reellement</orig>
+              <reg resp="#editor">réellement</reg>
+            </choice>
+            dissipé<lb/>
+            les
+            <choice>
+              <orig>rassemblemens</orig>
+              <reg resp="#editor">rassemblements</reg>
+            </choice>
+            qui existent dans ses <placeName ref="wikidata:Q1794352"><choice><orig>Etats</orig><reg resp="#editor">États</reg></choice></placeName>,
+            rien ne
+            <choice>
+              <orig>m'empechera</orig>
+              <reg resp="#editor">m'empêchera</reg>
+            </choice>
+          </p>
+        </div>
       </div>
     </body>
   </text>

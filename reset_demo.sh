@@ -17,16 +17,17 @@ git checkout main
 git reset --hard HEAD
 git clean -fd
 
-# 4. Delete feature branch locally and remotely if present
-if git show-ref --verify --quiet refs/heads/feature/date-audit; then
-    echo "Deleting local feature/date-audit branch..."
-    git branch -D feature/date-audit
-fi
-
-if git ls-remote --exit-code --heads origin feature/date-audit >/dev/null 2>&1; then
-    echo "Deleting remote feature/date-audit branch on GitHub..."
-    git push origin --delete feature/date-audit 2>/dev/null || true
-fi
+# 4. Delete demo feature branches locally and remotely if present
+for br in feature/french-entities feature/date-audit; do
+    if git show-ref --verify --quiet "refs/heads/$br"; then
+        echo "Deleting local $br branch..."
+        git branch -D "$br"
+    fi
+    if git ls-remote --exit-code --heads origin "$br" >/dev/null 2>&1; then
+        echo "Deleting remote $br branch on GitHub..."
+        git push origin --delete "$br" 2>/dev/null || true
+    fi
+done
 
 # 5. Verify XML syntax gate
 echo "Verifying syntax gate..."
