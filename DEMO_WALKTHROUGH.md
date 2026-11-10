@@ -18,7 +18,7 @@
 ### 08:36 – 08:46 (10 mins) · Phase 2: Live Demo — Remotes, Branches, and PR Apparatus
 
 1. **Fork & Verify Remote Configuration (Projector):**
-   - Have Ace fork `https://github.com/kmpenner/rels-398-demo` on GitHub and clone his fork, OR run in your demo terminal:
+   - Have Ace fork `https://github.com/kmpenner/rels-398-demo` on GitHub and clone her fork, OR run in your demo terminal:
    ```bash
    git status
    git remote -v
