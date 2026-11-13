@@ -119,7 +119,7 @@
         </div>
         <div>
           <p>
-            J'ai chargé <persName ref="wikidata:Q2976897">le Ministre des affaires <choice><orig>etrangeres</orig><reg resp="#editor">étrangères</reg></choice></persName>,
+            J'ai <choice><orig>charge</orig><reg>chargé</reg></choice>  <persName ref="wikidata:Q2976897">le Ministre des affaires <choice><orig>etrangeres</orig><reg resp="#editor">étrangères</reg></choice></persName>,
             <choice>
               <abbr type="title">MM.</abbr>
               <expan resp="#editor">Messieurs</expan>
